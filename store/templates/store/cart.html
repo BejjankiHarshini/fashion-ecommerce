@@ -36,6 +36,27 @@
 
     <h1>Shopping Cart</h1>
 
+{% if product %}
+
+    <h2>{{ product.name }}</h2>
+
+    <p>{{ product.description }}</p>
+
+    <p>₹{{ product.price }}</p>
+
+    <br>
+
+    <a href="/order-success/?product_id={{ product.id }}" class="btn">
+        Place Order
+    </a>
+
+{% else %}
+
+    <p>Your cart is empty.</p>
+
+{% endif %}
+
+
     <p>Product added successfully.</p>
 
     <br>
