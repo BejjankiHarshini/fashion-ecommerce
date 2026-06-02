@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fashion Store</title>
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f4f4f4;
+            margin:0;
+            padding:0;
+        }
+
+        .header{
+            background:#222;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        .products{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:20px;
+            padding:30px;
+        }
+
+        .card{
+            background:white;
+            width:300px;
+            border-radius:12px;
+            overflow:hidden;
+            transition:0.3s;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        .card img{
+            width:100%;
+            height:300px;
+            object-fit:cover;
+        }
+
+        .card-content{
+            padding:15px;
+        }
+
+        .card h2{
+            color:#333;
+        }
+
+        .price{
+            color:green;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        .btn{
+            background:#007bff;
+            color:white;
+            text-decoration:none;
+            padding:10px 20px;
+            border-radius:5px;
+            display:inline-block;
+            margin-top:10px;
+        }
+
+        .btn:hover{
+            background:#0056b3;
+        }
+        .card img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:8px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Fashion E-Commerce Store</h1>
+    <p>Latest Trends for Women</p>
+</div>
+
+<div class="products">
+
+{% for product in products %}
+
+    <div class="card">
+        {% if product.name == "jeans" %}
+            <img src="{% static 'images/jeans.jpg' %}"> 
+
+        {% elif product.name == "shrug" %}
+            <img src="{% static 'images/shrug.jpg' %}">
+
+        {% elif product.name == "crop top" %}
+            <img src="{% static 'images/crop top.jpg' %}">
+
+        {% elif product.name == "long skirt" %}
+            <img src="{% static 'images/long skirt.jpg' %}">
+
+        {% elif product.name == "frock" %}
+            <img src="{% static 'images/frock.jpg' %}">
+
+        {% elif product.name == "instant saree" %}
+            <img src="{% static 'images/instant saree.jpg' %}">
+
+        {% elif product.name == "ready made blouse" %}
+        <img src="{% static 'images/ready made blouse.jpg' %}">
+        
+        {% else %}
+            <img src="{% static 'images/default.jpg' %}">
+        {% endif %}
+
+        <div class="card-content">
+
+            <h2>{{ product.name }}</h2>
+
+            <p>{{ product.description }}</p>
+
+            <p class="price">₹{{ product.price }}</p>
+
+            <a href="/product/{{ product.id }}/" class="btn">
+                View Details
+            </a>
+
+        </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
