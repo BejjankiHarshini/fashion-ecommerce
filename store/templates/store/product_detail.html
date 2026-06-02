@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +39,32 @@
 <body>
 
 <div class="container">
+
+    {% if product.name == "jeans" %}
+        <img src="{% static 'images/jeans.jpg' %}" alt="Jeans">
+
+    {% elif product.name == "shrug" %}
+        <img src="{% static 'images/shrug.jpg' %}" alt="Shrug">
+
+    {% elif product.name == "frock" %}
+        <img src="{% static 'images/frock.jpg' %}" alt="Frock">
+
+    {% elif product.name == "long skirt" %}
+        <img src="{% static 'images/long skirt.jpg' %}" alt="Skirt">
+
+    {% elif product.name == "ready made blouse" %}
+        <img src="{% static 'images/ready made blouse.jpg' %}" alt="Blouse">
+
+    {% elif product.name == "instant saree" %}
+        <img src="{% static 'images/instant saree.jpg' %}" alt="Saree">
+
+    {% endif %}
+
+    <h1>{{ product.name }}</h1>
+
+    <p>{{ product.description }}</p>
+
+    <p class="price">₹{{ product.price }}</p>
 
     <h1>{{ product.name }}</h1>
 
