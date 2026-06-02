@@ -1,15 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>{{ product.name }}</title>
-
     <style>
         body{
             font-family:Arial, sans-serif;
             background:#f4f4f4;
             padding:40px;
         }
-
         .container{
             background:white;
             max-width:700px;
@@ -17,14 +17,21 @@
             padding:30px;
             border-radius:10px;
             box-shadow:0 2px 10px rgba(0,0,0,0.2);
+            text-align:center;
         }
-
+        img{
+            width:100%;
+            max-width:400px;
+            height:450px;
+            object-fit:cover;
+            border-radius:10px;
+            margin-bottom:20px;
+        }
         .price{
             color:green;
             font-size:24px;
             font-weight:bold;
         }
-
         .btn{
             background:#007bff;
             color:white;
@@ -34,18 +41,31 @@
         }
     </style>
 </head>
-
 <body>
 
 <div class="container">
 
+    {% if product.name == "jeans" %}
+        <img src="{% static 'images/jeans.jpg' %}">
+    {% elif product.name == "shrug" %}
+        <img src="{% static 'images/shrug.jpg' %}">
+    {% elif product.name == "frock" %}
+        <img src="{% static 'images/frock.jpg' %}">
+    {% elif product.name == "crop top" %}
+        <img src="{% static 'images/crop top.jpg' %}">
+    {% elif product.name == "long skirt" %}
+        <img src="{% static 'images/long skirt.jpg' %}">
+    {% elif product.name == "ready made blouse" %}
+        <img src="{% static 'images/ready made blouse.jpg' %}">
+    {% elif product.name == "instant saree" %}
+        <img src="{% static 'images/instant saree.jpg' %}">
+    {% endif %}
+
     <h1>{{ product.name }}</h1>
-
     <p>{{ product.description }}</p>
-
     <p class="price">₹{{ product.price }}</p>
 
-    <a href="/cart/" class="btn">Add to Cart</a>
+    <a href="/cart/?product_id={{ product.id }}" class="btn">Add to Cart</a>
 
     <br><br>
 
